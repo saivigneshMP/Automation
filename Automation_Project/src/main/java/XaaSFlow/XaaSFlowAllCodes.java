@@ -30,8 +30,12 @@ public class XaaSFlowAllCodes {
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='selectsaasprofileFlowForm:create_application_profile_btn_slid1']"))).click();
 	    Random r = new Random();
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingClustername_input']"))).sendKeys("XaaSgroup" + r.nextInt(456));
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']"))).sendKeys("XaaSapplication" + r.nextInt(456));
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:profilename']"))).sendKeys("XaaSapplication" + r.nextInt(456));
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='profilecreationForm:create_application_profile_sidebar']"))).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']"))).clear();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:profilename']"))).clear();
+	    Thread.sleep(2000);
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']"))).sendKeys("XaaSapplication" + r.nextInt(456));
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:profilename']"))).sendKeys("XaaSapplication" + r.nextInt(456));
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='profilecreationForm:create_application_profile_sidebar']"))).click();
