@@ -1,13 +1,18 @@
 package XaaSFlow;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,13 +24,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class XaaSFlowAllCodes {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, AWTException {
 		// TODO Auto-generated method stub
 
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		WebDriverWait loginwait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		Wait<WebDriver> fwait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40))
+				.pollingEvery(Duration.ofSeconds(3)).ignoring(StaleElementReferenceException.class);
+		Actions a = new Actions(driver);
 		driver.manage().window().maximize();
 		driver.get("https://automationzone.qaops.smartersaas.com:9000/surpaas/#");
 		loginwait
@@ -43,9 +51,7 @@ public class XaaSFlowAllCodes {
 				.click();
 		wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//button[@id='selectsaasprofileFlowForm:create_application_profile_btn_slid1']"))).click();
-		Random r = new Random();
-		Wait<WebDriver> fwait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40))
-				.pollingEvery(Duration.ofSeconds(3)).ignoring(Exception.class);
+		Random r = new Random();		
 		fwait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingClustername_input']")))
 				.sendKeys("groupname" + r.nextInt());
@@ -76,25 +82,67 @@ public class XaaSFlowAllCodes {
 		} else {
 
 		}
-
+		String applicationNameNew =fwait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']")))
+				.getText();
+		System.out.println(applicationNameNew);
 		wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//button[@id='profilecreationForm:create_application_profile_sidebar']"))).click();
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//button[@id='applicationArtifaactAddEditForm:createartifact']")))
 				.click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='addArtifactForm:displayname']")))
-				.sendKeys("test" + r.nextInt(789));
+				.sendKeys("test" + r.nextInt(789432));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='addArtifactForm:downloadurl']")))
 				.sendKeys("https://automationzone.qaops.smartersaas.com:9000/surpaas/#");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//textarea[@id='addArtifactForm:description']")))
-				.sendKeys("test" + r.nextInt(852));
+				.sendKeys("test" + r.nextInt(852234));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='addArtifactForm:saveartifact']")))
 				.click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='statusDialogform:Ok']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-chevron-right'])[1]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='cke_1_contents']")))
-				.sendKeys("test" + r.nextInt(985));
-
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']")));
+	 	WebElement iframe = driver.findElement(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']"));
+	    driver.switchTo().frame(iframe);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']/p")))
+		.sendKeys("test" + r.nextInt());
+		driver.switchTo().defaultContent();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='applicationArtifaactAddEditForm:saveButton']")))
+		.click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='statusDialogform:Ok']")))
+		.click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-chevron-right'])[4]")))
+    	.click();
+	//	Robot robot = new Robot();
+	//	robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+	//	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='createPublishmentid']")))
+    //    	.click();
+	//	Thread.sleep(15000);
+	//	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appcreatestatusdialog:regionReset']")))
+   // 	.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='menuCLinkForm:appMarketizercCmdLink']")))
+    	.click();		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appandoffersetupHomeListForm:j_idt5147']")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@id='collapse-icon']")))
+    	.click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appandoffersetupHomeListForm:j_idt5147']"))).click();		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='appcreatestatusdialog:existingAppName_input']")))
+    	.click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appcreatestatusdialog:existingAppName_button']")))
+    	.click();
+		driver.findElement(By.xpath("//span[@id='appcreatestatusdialog:existingAppName']/input")).sendKeys("test");
+//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appcreatestatusdialog:advisoryregionsave']"))).click();
+//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@id='appcreatestatusdialog:existingAppName']")))
+//    	.sendKeys(applicationNameNew);
+	
+         
+		
+		
+		
+		
+	
 	}
 
 }
