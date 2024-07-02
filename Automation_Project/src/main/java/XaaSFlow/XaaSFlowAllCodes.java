@@ -60,14 +60,14 @@ public class XaaSFlowAllCodes {
 				.sendKeys("applicationname" + r.nextInt());
 		fwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:profilename']")))
 				.sendKeys("profilename" + r.nextInt());
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		String applicationName = fwait
 				.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']")))
-				.getText();
+				.getAttribute("value");
 		String profileName = fwait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:profilename']")))
-				.getText();
+				.getAttribute("value");
 		if (applicationName.isEmpty()) {
 			fwait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']")))
@@ -84,8 +84,7 @@ public class XaaSFlowAllCodes {
 		}
 		String applicationNameNew =fwait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']")))
-				.getText();
-		System.out.println(applicationNameNew);
+				.getAttribute("value");
 		wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//button[@id='profilecreationForm:create_application_profile_sidebar']"))).click();
 		wait.until(ExpectedConditions
@@ -113,15 +112,7 @@ public class XaaSFlowAllCodes {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='statusDialogform:Ok']")))
 		.click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-chevron-right'])[4]")))
-    	.click();
-	//	Robot robot = new Robot();
-	//	robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-	//	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='createPublishmentid']")))
-    //    	.click();
-	//	Thread.sleep(15000);
-	//	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appcreatestatusdialog:regionReset']")))
-   // 	.click();
-		
+    	.click();		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='menuCLinkForm:appMarketizercCmdLink']")))
     	.click();		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appandoffersetupHomeListForm:j_idt5147']")));
@@ -132,14 +123,8 @@ public class XaaSFlowAllCodes {
     	.click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appcreatestatusdialog:existingAppName_button']")))
     	.click();
-		driver.findElement(By.xpath("//span[@id='appcreatestatusdialog:existingAppName']/input")).sendKeys("test");
-//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='appcreatestatusdialog:advisoryregionsave']"))).click();
-//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@id='appcreatestatusdialog:existingAppName']")))
-//    	.sendKeys(applicationNameNew);
-	
-         
-		
-		
+		driver.findElement(By.xpath("//span[@id='appcreatestatusdialog:existingAppName']/input")).sendKeys(applicationNameNew);
+		driver.findElement(By.xpath("//button[@id='appcreatestatusdialog:advisoryregionsave']")).click();		
 		
 		
 	
