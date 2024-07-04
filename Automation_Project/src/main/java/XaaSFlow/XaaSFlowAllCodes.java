@@ -59,6 +59,7 @@ public class XaaSFlowAllCodes {
 		fwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:profilename']")))
 				.sendKeys("profilename" + r.nextInt());
 		Thread.sleep(10000);
+		
 		String applicationName = fwait
 				.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']")))
@@ -81,7 +82,8 @@ public class XaaSFlowAllCodes {
 		} else {
 
 		}
-		String applicationNameNew = fwait
+		
+				String applicationNameNew = fwait
 				.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("//input[@id='profilecreationForm:existingAppusername_input']")))
 				.getAttribute("value");
@@ -89,9 +91,11 @@ public class XaaSFlowAllCodes {
 				By.xpath("//button[@id='profilecreationForm:create_application_profile_sidebar']"))).click();
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//button[@id='applicationArtifaactAddEditForm:createartifact']")))
-				.click();
+				.click();		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='addArtifactForm:displayname']")))
 				.sendKeys("test" + r.nextInt(789432));
+		
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='addArtifactForm:downloadurl']")))
 				.sendKeys("https://automationzone.qaops.smartersaas.com:9000/surpaas/#");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//textarea[@id='addArtifactForm:description']")))
