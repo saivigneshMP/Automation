@@ -27,7 +27,8 @@ public class LoginScreen extends AbstractComponent {
 	By password = By.xpath("//input[@id='loginForm:password' or @name = 'loginForm:password']");
 	
 	public void goTo() {
-		driver.get("https://automationzone.qaops.smartersaas.com:9000/surpaas/#");;
+		driver.get("https://automationzone.qaops.smartersaas.com:9000/surpaas/#");
+		driver.manage().window().maximize();
 	}
 	
 	public void loginApplication(String usernames, String passwords) {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="methods" name="Failed suite [Parallel Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="methods" name="XaaSFlow(failed)">
+    <classes>
+      <class name="testcases.XaaSflowTestCases">
+        <methods>
+          <include name="launchApplication"/>
+          <include name="xaasFlow"/>
+        </methods>
+      </class> <!-- testcases.XaaSflowTestCases -->
+    </classes>
+  </test> <!-- XaaSFlow(failed) -->
+</suite> <!-- Failed suite [Parallel Test Suite] -->

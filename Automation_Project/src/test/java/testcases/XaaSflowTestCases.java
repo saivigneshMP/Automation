@@ -1,24 +1,20 @@
-package XaaSFlow;
-import java.awt.AWTException;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
+package testcases;
+import org.testng.annotations.Test;
 import pageobjects.ApplicationPage;
 import pageobjects.LoginScreen;
 import pageobjects.Marketizer;
 import pageobjects.SubscriptionPlanPage;
 import pageobjects.XaaSFlow;
-import testcomponents.BaseClass;
+import testcomponents.BaseTest;
 
 
-public class XaaSflowMainMethod extends BaseClass {
+
+public class XaaSflowTestCases extends BaseTest   {
     
 	
-	public void fullTest() {
-		// TODO Auto-generated method stub
-		LoginScreen loginscreen = launchApplication();
-		loginscreen.goTo();
+	@Test
+	public void xaasFlow() throws Exception {
+		LoginScreen loginscreen = new LoginScreen(driver);
 		loginscreen.loginApplication("saivignesh@corenttech.com", "Corent@123$#");
 		ApplicationPage applicationPage = new ApplicationPage(driver);
 		applicationPage.applicationCreation();
@@ -30,5 +26,7 @@ public class XaaSflowMainMethod extends BaseClass {
 		SubscriptionPlanPage subscriptionPlanPage = new SubscriptionPlanPage(driver);
 		subscriptionPlanPage.createSubcriptionPlan();
 	}
+		
+	}
 
-}
+
