@@ -102,10 +102,12 @@ public class XaaSFlowAllCodes {
 				.sendKeys("test" + r.nextInt(852234));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='addArtifactForm:saveartifact']")))
 				.click();
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='statusDialogform:Ok']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-chevron-right'])[1]"))).click();
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']")));
+		
 		WebElement iframe = driver.findElement(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']"));
 		driver.switchTo().frame(iframe);
 		wait.until(ExpectedConditions.elementToBeClickable(
@@ -115,7 +117,9 @@ public class XaaSFlowAllCodes {
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//button[@id='applicationArtifaactAddEditForm:saveButton']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='statusDialogform:Ok']"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-chevron-right'])[4]"))).click();
+		
+		
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-chevron-right'])[4]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='menuCLinkForm:appMarketizercCmdLink']")))
 				.click();
 		wait.until(ExpectedConditions.elementToBeClickable(
@@ -134,11 +138,11 @@ public class XaaSFlowAllCodes {
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//button[@id='subscriptionPlanForm:subscriptionAddid']/span"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='AddorEditForm:productName']"))).sendKeys("plan"+ r.nextInt());
-		WebElement iframe1 = driver.findElement(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']"));
-		driver.switchTo().frame(iframe1);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']/p"))).click();
-		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']/p"))).sendKeys("test"+ r.nextInt());
-		driver.switchTo().defaultContent();
+	//	WebElement iframe1 = driver.findElement(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']"));
+	//	driver.switchTo().frame(iframe1);
+	//	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']/p"))).click();
+    //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']/p"))).sendKeys("test"+ r.nextInt());
+	//	driver.switchTo().defaultContent();
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_PAGE_DOWN);
 		Thread.sleep(2000);
@@ -186,6 +190,4 @@ public class XaaSFlowAllCodes {
 	   System.out.println(driver.getCurrentUrl());
 	}
 	
-	
-
 }

@@ -1,11 +1,15 @@
 package abstractcomponents;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -16,7 +20,12 @@ public class AbstractComponent {
 	public AbstractComponent(WebDriver driver) {
 		this.driver = driver;
 	}
-
+    
+	public void waitForElementToBeClickable(By findBy, int second) {
+		WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(second));
+		wait.until(ExpectedConditions.elementToBeClickable(findBy));
+	}
+	
 	public void waitForElementToBeClickable_SendKeys(By findBy, String name , int second) {
 		WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(second));
 		wait.until(ExpectedConditions.elementToBeClickable(findBy)).sendKeys(name);
@@ -40,13 +49,26 @@ public class AbstractComponent {
 
 	}
 	
+	public void iframe(WebElement element) {
+		driver.switchTo().frame(element);
+		
+	}
+	
+	public void defaultWindow() {
+		driver.switchTo().defaultContent();
+	}
+	
 	public int random() {
 		Random r = new Random();
 		return r.nextInt();
 		
 		
-	}
-       
+		}
+    public Robot pageDown() throws Exception {
+    	Robot robot = new Robot();
+		return robot;
+		
+    }
 
 }
 	

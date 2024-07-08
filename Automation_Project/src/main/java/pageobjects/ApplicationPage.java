@@ -21,9 +21,6 @@ public class ApplicationPage extends AbstractComponent {
 	@FindBy(xpath = "//button[@id='profilecreationForm:create_application_profile_sidebar']")
 	WebElement CreateApplicationProfile;
 
-	@FindBy(xpath = "//input[@id='addArtifactForm:displayname']")
-	WebElement displayname;
-
 	@FindBy(xpath = "//input[@id='addArtifactForm:downloadurl']")
 	WebElement downloadURL;
 
@@ -32,6 +29,9 @@ public class ApplicationPage extends AbstractComponent {
 	
 	@FindBy(xpath = "//button[@id='addArtifactForm:saveartifact']")
 	WebElement saveArtifact;
+	
+	@FindBy(xpath = "//iframe[@class='cke_wysiwyg_frame cke_reset']")
+	WebElement iframeWebElement;
 
 	By radiobutton = By.xpath("//input[@id='radio-3']/following-sibling::label");
 	By SaaSOperation = By.xpath("//a[@id='menuCLinkForm:appsaascCmdLink']");
@@ -43,6 +43,13 @@ public class ApplicationPage extends AbstractComponent {
 	By applicationName = By.xpath("//input[@id='profilecreationForm:existingAppusername_input']");
 	By profileName = By.xpath("//input[@id='profilecreationForm:profilename']");
 	By AddArtifactButton = By.xpath("//button[@id='applicationArtifaactAddEditForm:createartifact']");
+	By displayname = By.xpath("//input[@id='addArtifactForm:displayname']");
+	By popupOkButton = By.xpath("//button[@id='statusDialogform:Ok']");
+	By applicationProcedureMenu = By.xpath("(//i[@class='fa fa-chevron-right'])[1]");
+	By iframe = By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']");
+	By applicationProcedureTextBox = By.xpath("//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']/p");
+	By applicationProcedureSaveButton = By.xpath("//button[@id='applicationArtifaactAddEditForm:saveButton']");
+	By applicationProcedureSaveOkButton = By.xpath("//button[@id='statusDialogform:Ok']");
 
 	public void applicationCreation() throws InterruptedException {
 		waitForElementToBeClickable_Click(SaaSOperation, 60);
@@ -68,12 +75,5 @@ public class ApplicationPage extends AbstractComponent {
 		String applicationNameNew = fluentWait_GetAttribute(applicationName, "value");
 		CreateApplicationProfile.click();
 	}
-
-	public void createArtifact() {
-		waitForElementToBeClickable_Click(AddArtifactButton, 20);
-		displayname.sendKeys("test" + random());
-		downloadURL.sendKeys("https://automationzone.qaops.smartersaas.com:9000/surpaas/#");
-		Description.sendKeys("test" + random());
-		saveArtifact.click();
-	}
+	
 }
