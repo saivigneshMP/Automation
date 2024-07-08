@@ -46,6 +46,14 @@ public class AbstractComponent {
 		Wait<WebDriver> fwait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40))
 				.pollingEvery(Duration.ofSeconds(3)).ignoring(StaleElementReferenceException.class);
 		return fwait.until(ExpectedConditions.elementToBeClickable(findby)).getAttribute(name);
+	}
+		
+		public void fluentWait_Click(By findby) {	
+			Wait<WebDriver> fwait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40))
+					.pollingEvery(Duration.ofSeconds(3)).ignoring(StaleElementReferenceException.class);
+		     fwait.until(ExpectedConditions.elementToBeClickable(findby)).click();
+		
+		
 
 	}
 	

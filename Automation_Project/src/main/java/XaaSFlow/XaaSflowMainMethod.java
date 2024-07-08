@@ -1,6 +1,6 @@
 package XaaSFlow;
 import java.awt.AWTException;
-
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,16 +9,15 @@ import pageobjects.LoginScreen;
 import pageobjects.Marketizer;
 import pageobjects.SubscriptionPlanPage;
 import pageobjects.XaaSFlow;
+import testcomponents.BaseClass;
 
-public class XaaSflowMainMethod {
 
-	public static void main(String[] args) throws Exception {
+public class XaaSflowMainMethod extends BaseClass {
+    
+	
+	public void fullTest() {
 		// TODO Auto-generated method stub
-		
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();	
-		LoginScreen loginscreen = new LoginScreen(driver);
+		LoginScreen loginscreen = launchApplication();
 		loginscreen.goTo();
 		loginscreen.loginApplication("saivignesh@corenttech.com", "Corent@123$#");
 		ApplicationPage applicationPage = new ApplicationPage(driver);

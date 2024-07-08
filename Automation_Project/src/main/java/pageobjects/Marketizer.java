@@ -32,7 +32,7 @@ public class Marketizer extends AbstractComponent {
 
 	public void createMarketizer() {
 		marketizerMenu.click();
-		waitForElementToBeClickable(createMarketizerMenu, 20);
+		waitForElementToBeClickable(createMarketizerMenu, 40);
 		waitForElementToBeClickable_Click(sidemenu, 20);
 		for (int i = 0; i < planNames.size(); i++) {
 			WebElement element = planNames.get(i);

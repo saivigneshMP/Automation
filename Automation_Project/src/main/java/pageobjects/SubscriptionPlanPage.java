@@ -31,6 +31,9 @@ public class SubscriptionPlanPage extends AbstractComponent {
 
 	@FindBy(xpath = "//ul[@id='AddorEditForm:recurringTypeid_items']//li")
 	List<WebElement> recurringdropdownvalue;
+	
+	@FindBy(xpath = "//*[text()='Create Subscription Plans']")
+	WebElement createSubscriptionPlanText;
 
 	By addSubscriptionPlanIcon = By.xpath("//button[@id='subscriptionPlanForm:subscriptionAddid']/span");
 	By subscriptionPlanName = By.xpath("//input[@id='AddorEditForm:productName']");
@@ -42,7 +45,7 @@ public class SubscriptionPlanPage extends AbstractComponent {
 	By planSaveOkButton = By.xpath("//button[@id='SuccessFormsummary:successcloseButn']");
 
 	public void createSubcriptionPlan() throws Exception {
-		waitForElementToBeClickable_Click(addSubscriptionPlanIcon, 40);
+		waitForElementToBeClickable_Click(addSubscriptionPlanIcon, 60);
 		waitForElementToBeClickable_SendKeys(subscriptionPlanName, "planname" + random(), 20);
 		Thread.sleep(2000);
 		pageDown().keyPress(KeyEvent.VK_PAGE_DOWN);
@@ -82,9 +85,9 @@ public class SubscriptionPlanPage extends AbstractComponent {
 				Thread.sleep(2000);
 			}
 		}
-
-		waitForElementToBeClickable_Click(planSaveButton, 20);
-		waitForElementToBeClickable_Click(planSaveOkButton, 20);
+		createSubscriptionPlanText.click();
+		fluentWait_Click(planSaveButton);
+		waitForElementToBeClickable_Click(planSaveOkButton,20);
 	}
 
 }
