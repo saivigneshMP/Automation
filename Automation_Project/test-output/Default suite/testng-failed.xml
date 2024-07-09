@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.XaaSflowTestCases">
+      <class name="testcases.SmokeTestCases">
         <methods>
+          <include name="quit"/>
           <include name="launchApplication"/>
-          <include name="xaasFlow"/>
+          <include name="smoke" invocation-numbers="1"/>
         </methods>
-      </class> <!-- testcases.XaaSflowTestCases -->
+      </class> <!-- testcases.SmokeTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,7 +103,17 @@
                     <div class="method-list-content passed suite-suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-suite" title="testcases.SmokeTestCases" class="method navigator-link" hash-for-method="smoke">smoke</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-suite" title="testcases.SmokeTestCases" class="method navigator-link" hash-for-method="smoke({password=Corent@123$#, email=saivignesh@corenttech.com})">smoke({password=Corent@123$#, email=saivignesh@corenttech.com})</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-suite" title="testcases.SmokeTestCases" class="method navigator-link" hash-for-method="smoke({password=Corent@123$#, email=egilbert@corenttech.com})">smoke({password=Corent@123$#, email=egilbert@corenttech.com})</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-suite" title="testcases.SmokeTestCases" class="method navigator-link" hash-for-method="smoke({password=Corent@123$#, email=gparthasarathy.com})">smoke({password=Corent@123$#, email=gparthasarathy.com})</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-suite -->
@@ -126,9 +136,26 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="smoke">
-                  </a> <!-- smoke -->
+                  <a name="smoke({password=Corent@123$#, email=saivignesh@corenttech.com})">
+                  </a> <!-- smoke({password=Corent@123$#, email=saivignesh@corenttech.com}) -->
                   <span class="method-name">smoke</span>
+                  <span class="parameters">({password=Corent@123$#, email=saivignesh@corenttech.com})</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="smoke({password=Corent@123$#, email=egilbert@corenttech.com})">
+                  </a> <!-- smoke({password=Corent@123$#, email=egilbert@corenttech.com}) -->
+                  <span class="method-name">smoke</span>
+                  <span class="parameters">({password=Corent@123$#, email=egilbert@corenttech.com})</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="smoke({password=Corent@123$#, email=gparthasarathy.com})">
+                  </a> <!-- smoke({password=Corent@123$#, email=gparthasarathy.com}) -->
+                  <span class="method-name">smoke</span>
+                  <span class="parameters">({password=Corent@123$#, email=gparthasarathy.com})</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -142,7 +169,7 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+&lt;suite parallel=&quot;tests&quot; name=&quot;suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;groups&gt;
     &lt;run&gt;
       &lt;include name=&quot;smoke&quot;/&gt;
@@ -153,12 +180,12 @@
       &lt;include name=&quot;smoke&quot;/&gt;
     &lt;/run&gt;
   &lt;/groups&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;SmokeTest&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; parallel=&quot;tests&quot; name=&quot;SmokeTest&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;testcases.SmokeTestCases&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- SmokeTest --&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;XaaSFlow&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; parallel=&quot;tests&quot; name=&quot;XaaSFlow&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;testcases.XaaSflowTestCases&quot;/&gt;
     &lt;/classes&gt;
@@ -211,16 +238,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'smoke')
 data.setCell(0, 2, 'testcases.SmokeTestCases')
-data.setCell(0, 3, 1593);
+data.setCell(0, 3, 3545);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'smoke')
+data.setCell(1, 2, 'testcases.SmokeTestCases')
+data.setCell(1, 3, 3401);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'smoke')
+data.setCell(2, 2, 'testcases.SmokeTestCases')
+data.setCell(2, 3, 2678);
 window.suiteTableData['suite']= { tableData: data, tableDiv: 'times-div-suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 seconds</span>
+              <span class="suite-total-time">Total running time: 27 seconds</span>
               <div id="times-div-suite">
               </div> <!-- times-div-suite -->
             </div> <!-- times-div -->
@@ -259,12 +294,36 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">smoke</span>
-                <span class="method-start">18979 ms</span>
+                <span class="method-name">smoke({password=Corent@123$#, email=saivignesh@corenttech.com})</span>
+                <span class="method-start">7532 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">20582 ms</span>
+                <span class="method-start">11084 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchApplication</span>
+                <span class="method-start">11475 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">smoke({password=Corent@123$#, email=egilbert@corenttech.com})</span>
+                <span class="method-start">15360 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">quit</span>
+                <span class="method-start">18040 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchApplication</span>
+                <span class="method-start">18538 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">smoke({password=Corent@123$#, email=gparthasarathy.com})</span>
+                <span class="method-start">21810 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">quit</span>
+                <span class="method-start">25214 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
