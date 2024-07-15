@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel="tests" name="suite">
-	<groups>
+		<groups>
 		<run>
 			<include name="smoke"> </include>
 		</run>
 	</groups>
+	<listeners>
+		<listener class-name="testcomponents.Listeners"></listener>
+	</listeners>
 	<test thread-count="5" name="SmokeTest">
 		<classes>
 			<class name="testcases.SmokeTestCases" />

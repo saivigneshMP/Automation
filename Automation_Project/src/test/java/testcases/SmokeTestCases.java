@@ -4,15 +4,19 @@ import java.util.List;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+
+
 import pageobjects.LoginScreen;
 
 import testcomponents.BaseTest;
 
 
 
-public class SmokeTestCases extends BaseTest   {
+
+public class SmokeTestCases extends BaseTest  {
     
-	@Test(dataProvider ="getdata", groups={"smoke"})
+	@Test(dataProvider ="getdata", groups={"smoke"},retryAnalyzer= testcomponents.Retry.class)
 	public void smoke (HashMap<String,String> input) throws Exception {
 		LoginScreen loginscreen = new LoginScreen(driver);
 		loginscreen.loginApplication(input.get("email"), input.get("password"));

@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -16,6 +18,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -58,8 +62,18 @@ public class BaseTest {
 
 		});
 		return data;
-
 	}
+		
+	public String getScreenShot (String testCaseName ,WebDriver driver) throws IOException {
+		TakesScreenshot ts =  (TakesScreenshot)driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File file = new File(System.getProperty("user.dir")+"//reports//"+testCaseName+".png");
+		FileUtils.copyFile(source, file);
+		return System.getProperty("user.dir")+"//reports//"+testCaseName+".png";
+		
+	}
+		
+	
 	@BeforeMethod(alwaysRun = true)
 	public void launchApplication() throws Exception {
 		driver = initializeDriver();
